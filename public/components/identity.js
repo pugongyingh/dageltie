@@ -11,8 +11,15 @@ customElements.define(
     async connectedCallback() {
       this.shadowRoot.addEventListener("click", (event) => {
         const name = event.srcElement.id;
-        if (this[name]) {
-          this[name]();
+        switch (name) {
+          case "login":
+            return this.login();
+          case "signup":
+            return this.signup();
+          case "logout":
+            return this.logout();
+          default:
+            break;
         }
       });
       netlifyIdentity.on("init", () => this.render());
@@ -25,7 +32,7 @@ customElements.define(
       netlifyIdentity.open("signup");
     }
     logout() {
-      netlifyIdentity.logout();
+      netlifyIdentity.open();
     }
     renderLogin() {
       return `<span id="login" class="link">Login</span>`;
@@ -35,12 +42,13 @@ customElements.define(
     }
     renderLogout () {
       return `
-        <span><img src="${this.user.user_metadata.avatar_url}" alt="${this.user.user_metadata.full_name}"</span>
-        <span>${this.user.user_metadata.full_name}</span>
-        <span>${this.user.email}</span>
-        <span id="logout" class="link">
-          Logout
-        </span>
+        <img 
+          id="logout"
+          src="${this.user.user_metadata.avatar_url}"
+          alt="${this.user.user_metadata.full_name}"
+          width="40px"
+          height="40px"
+        />
       `;
     }
     render() {
@@ -64,6 +72,10 @@ customElements.define(
           }
           .link:hover {
             text-decoration: underline;
+          }
+          #logout {
+            border-radius: 100%;
+            cursor: pointer;
           }
         </style>
         <span id="identity">${content}</span>
