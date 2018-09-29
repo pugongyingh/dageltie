@@ -23,7 +23,8 @@ customElements.define(
         }
       });
       netlifyIdentity.on("init", () => this.render());
-      this.render();
+      netlifyIdentity.on("login", () => this.render());
+      netlifyIdentity.on("logout", () => this.render());
     }
     login() {
       netlifyIdentity.open("login");
@@ -52,7 +53,6 @@ customElements.define(
       `;
     }
     render() {
-      console.log("user", this.user);
       let content;
       if (this.user) {
         content = this.renderLogout();
