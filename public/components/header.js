@@ -26,8 +26,18 @@ customElements.define(
       font-family: "Leckerli One";
       font-size: 25px;
     }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      text-decoration: dotted;
+    }
   </style>
-  <div id="header"><span>dageltie</span></div>
+  <div id="header"><span><a href="/">dageltie</a></span></div>
 </header>`;
     }
   }

@@ -1,3 +1,5 @@
+import "./identity.js";
+
 customElements.define(
   "dageltie-nav",
   class extends HTMLElement {
@@ -9,20 +11,20 @@ customElements.define(
       this.render();
     }
     render() {
+      const user = netlifyIdentity.currentUser();
+      console.log("user", user);
       this.shadowRoot.innerHTML = `<nav>
   <style type="text/css">
     #nav {
       display: flex;
-      flex-direction: column;
       flex-grow: 1;
-      align-items: flex-start;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
       background-color: black;
       color: orange;
     }
-    #nav > span {
-      flex-basis: 50px;
-      line-height: 50px;
+    #links {
       font-family: "Leckerli One";
       font-size: 25px;
       margin-left: 25px;
@@ -37,16 +39,20 @@ customElements.define(
     a:visited {
       text-decoration: dotted;
     }
-    div[data-netlify-identity-menu] {
+    #identity {
       margin-right: 25px;
-      align-self: flex-end;
     }
   </style>
   <div id="nav">
-    <span>
-      <a href="/">dageltie</a>
+    <span id="links">
+      <a href="#about">about</a>
+      |
+      <a href="#contact">contact</a>
     </span>
-  </div>
+    <span id="identity">
+      <dageltie-identity></dangeltie-identity>
+    </span>
+</div>
 </nav>`;
     }
   }
