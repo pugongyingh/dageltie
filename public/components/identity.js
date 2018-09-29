@@ -15,7 +15,7 @@ customElements.define(
           this[name]();
         }
       });
-      netlifyIdentity.on("init", (user) => console.log("init", user));
+      netlifyIdentity.on("init", () => this.render());
       this.render();
     }
     login() {
