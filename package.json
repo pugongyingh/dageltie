@@ -1,0 +1,18 @@
+{
+  "name": "dageltie",
+  "description": "Dageltie static website hosted on Netlify",
+  "version": "1.0.0",
+  "repository": "https://github.com/richard-flosi/dageltie",
+  "author": "Richard Flosi <richard.flosi@gmail.com>",
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "10.0.2"
+  },
+  "keywords": [
+    "dageltie",
+    "netlify"
+  ],
+  "scripts": {
+    "start": "serve --no-clipboard --config serve.json"
+  }
+}
