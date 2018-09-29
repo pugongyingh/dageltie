@@ -34,7 +34,14 @@ customElements.define(
       return `<span id="signup" class="link">Sign Up</span>`;
     }
     renderLogout () {
-      return `<span id="logout" class="link">Logout</span>`;
+      return `
+        <span><img src="${this.user.user_metadata.avatar_url}" alt="${this.user.user_metadata.full_name}"</span>
+        <span>${this.user.user_metadata.full_name}</span>
+        <span>${this.user.email}</span>
+        <span id="logout" class="link">
+          Logout
+        </span>
+      `;
     }
     render() {
       console.log("user", this.user);
