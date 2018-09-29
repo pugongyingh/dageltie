@@ -46,7 +46,6 @@ customElements.define(
     <span>
       <a href="/">dageltie</a>
     </span>
-    <div data-netlify-identity-menu></div>
   </div>
 </nav>`;
     }
