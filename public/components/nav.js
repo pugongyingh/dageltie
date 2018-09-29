@@ -37,8 +37,17 @@ customElements.define(
     a:visited {
       text-decoration: dotted;
     }
+    div[data-netlify-identity-menu] {
+      margin-right: 25px;
+      align-self: flex-end;
+    }
   </style>
-  <div id="nav"><span><a href="/">dageltie</a></span></div>
+  <div id="nav">
+    <span>
+      <a href="/">dageltie</a>
+    </span>
+    <div data-netlify-identity-menu></div>
+  </div>
 </nav>`;
     }
   }
