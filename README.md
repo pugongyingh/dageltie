@@ -1,11 +1,11 @@
 # dageltie
 
-[x] Static Site 
-[x] Custom Elements
-[x] No Build Step
-[x] Netlify Identity
-[x] Netlify Functions
-[ ] Netlify Forms
+:white_check_mark: Static Site 
+:white_check_mark: Custom Elements
+:white_check_mark: No Build Step
+:white_check_mark: Netlify Identity
+:white_check_mark: Netlify Functions
+:negative_squared_cross_mark: Netlify Forms
 
 
 # Local Development
