@@ -1,9 +1,3 @@
-try {
-  require("dotenv").config();
-} catch (error) {
-  console.log(error);
-}
-
 const statusCode = 200;
 const headers = {
   "Access-Control-Allow-Origin" : "*",

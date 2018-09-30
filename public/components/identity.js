@@ -25,6 +25,7 @@ customElements.define(
       netlifyIdentity.on("init", () => this.render());
       netlifyIdentity.on("login", () => this.render());
       netlifyIdentity.on("logout", () => this.render());
+      this.render();
     }
     login() {
       netlifyIdentity.open("login");
