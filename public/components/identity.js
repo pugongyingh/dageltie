@@ -43,7 +43,9 @@ customElements.define(
       return `<span id="signup" class="link">Sign Up</span>`;
     }
     renderLogout () {
-      return `
+      if (this.user.user_metadata.avatar_url) {
+        const alt = this.user.user_metadata.full_name || this.user.email;
+        return `
         <img 
           id="logout"
           src="${this.user.user_metadata.avatar_url}"
@@ -52,6 +54,11 @@ customElements.define(
           height="40px"
         />
       `;
+      } else if (this.user.user_metadata.full_name) {
+        return `<span id="logout">${this.user.user_metadata.full_name}</span>`;
+      } else {
+        return `<span id="logout">${this.user.email}</span>`;
+      }
     }
     render() {
       let content;
