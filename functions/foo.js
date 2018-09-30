@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const statusCode = 200;
 const headers = {
   "Access-Control-Allow-Origin" : "*",
@@ -8,6 +10,6 @@ exports.handler = function(event, context, callback) {
   callback(null, {
     statusCode,
     headers,
-    body: process.env.LAMBDA_ENDPOINT
+    body: `foo: ${process.env.LAMBDA_ENDPOINT}`
   });
 }
