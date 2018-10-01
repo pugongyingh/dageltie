@@ -1,7 +1,7 @@
-import "./header.js";
-import "./nav.js";
-import "./main.js";
-import "./footer.js";
+import "./components/header/index.js";
+import "./components/nav/index.js";
+import "./components/main/index.js";
+import "./components/footer/index.js";
 
 customElements.define(
   "dageltie-layout",

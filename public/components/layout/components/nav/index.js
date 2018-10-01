@@ -1,4 +1,4 @@
-import "./identity.js";
+import "./components/identity/index.js";
 
 customElements.define(
   "dageltie-nav",
