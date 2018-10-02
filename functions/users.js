@@ -1,6 +1,9 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 exports.handler = async (event, context) => {
+  console.log("event", event);
+  console.log("context", context);
+  console.log("context.clientContext", context.clientContext);
   const { identity, user } = context.clientContext;
   const usersUrl = `${identity.url}/admin/users`;
   const adminAuthHeader = "Bearer " + identity.token;
