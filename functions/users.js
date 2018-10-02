@@ -1,27 +1,26 @@
 const https = require("https");
 const url = require("url");
 
-// TODO restrict to users that are logged in?
-
 exports.handler = (event, context, callback) => {
   const { identity, user } = context.clientContext;
-  console.log("user", user);
   if (user) {
-    const usersUrl = `${identity.url}/admin/users`;
-    const adminAuthHeader = "Bearer " + identity.token;
-    const parsedUrl = url.parse(usersUrl);
-    const options = {
+    const functionUrl = url.parse(`${identity.url}/admin/users`);
+    const requestOptions = {
       method: "GET",
-      protocol: parsedUrl.protocol,
-      host: parsedUrl.host,
-      hostname: parsedUrl.hostname,
-      port: parsedUrl.port,
-      path: parsedUrl.path,
+      protocol: functionUrl.protocol,
+      host: functionUrl.host,
+      hostname: functionUrl.hostname,
+      port: functionUrl.port,
+      path: functionUrl.path,
       headers: {
-        Authorization: adminAuthHeader
+        Authorization: `Bearer ${identity.token}`,
       }
     };
-    https.get(options, (response) => {
+    const responseHeaders = {
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Headers": "Content-Type"
+    };
+    https.get(requestOptions, (response) => {
       let data = "";
       response.on("data", (chunk) => {
         data += chunk;
@@ -29,32 +28,23 @@ exports.handler = (event, context, callback) => {
       response.on("end", () => {
         callback(null, {
           statusCode: 200,
-          headers: {
-            "Access-Control-Allow-Origin" : "*",
-            "Access-Control-Allow-Headers": "Content-Type"
-          },
-          body: data
+          headers: responseHeaders,
+          body: data,
         });
       });
       response.on("error", (error) => {
         console.log("Error: " + error.message);
         callback(null, {
           statusCode: 400,
-          headers: {
-            "Access-Control-Allow-Origin" : "*",
-            "Access-Control-Allow-Headers": "Content-Type"
-          },
-          body: error.message
+          headers: responseHeaders,
+          body: error.message,
         });
       });
     });  
   } else {
     callback(null, {
       statusCode: 400,
-      headers: {
-        "Access-Control-Allow-Origin" : "*",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
+      headers: responseHeaders,
       body: "Please login first."
     });
   }
