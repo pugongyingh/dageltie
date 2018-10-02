@@ -2,19 +2,40 @@ const https = require("https");
 const url = require("url");
 
 exports.handler = (event, context, callback) => {
-  console.log("event", event);
-  console.log("context", context);
-  console.log("context.clientContext", context.clientContext);
-  const { identity, user } = context.clientContext;
+  const { identity } = context.clientContext;
   console.log("identity", identity);
-  console.log("user", user);
   const usersUrl = `${identity.url}/admin/users`;
   const adminAuthHeader = "Bearer " + identity.token;
-  console.log("usersUrl", usersUrl);
-  console.log("adminAuthHeader", adminAuthHeader);
-  console.log("url.parse(usersUrl)", url.parse(usersUrl));
+  const parsedUrl = url.parse(usersUrl);
+  console.log("usersUrl", usersUrl); // https://dangeltie.netlify.com/.netlify/identity/admin/users
+  console.log("adminAuthHeader", adminAuthHeader); // Bearer ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mzg0NjA1NjksInN1YiI6IjAifQ.TBBrA-Bg8mpkwpI4cBPNrGgEuim7U87kfWZM6mOEBSc
+  console.log("parsedUrl", parsedUrl);
+  // Url {
+  //   protocol: 'https:',
+  //   slashes: true,
+  //   auth: null,
+  //   host: 'dangeltie.netlify.com',
+  //   port: null,
+  //   hostname: 'dangeltie.netlify.com',
+  //   hash: null,
+  //   search: null,
+  //   query: null,
+  //   pathname: '/.netlify/identity/admin/users',
+  //   path: '/.netlify/identity/admin/users',
+  //   href: 'https://dangeltie.netlify.com/.netlify/identity/admin/users' }
 
-  https.get("https://www.google.com/", (response) => {
+  const options = {
+    method: "GET",
+    protocol: parsedUrl.protocol,
+    host: parsedUrl.host,
+    hostname: parsedUrl.hostname,
+    port: parsedUrl.port,
+    path: parsedUrl.path,
+    headers: {
+      Authorization: adminAuthHeader
+    }
+  };
+  https.get(options, (response) => {
     let data = "";
     response.on("data", (chunk) => {
       // console.log("data");

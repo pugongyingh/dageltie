@@ -70,11 +70,8 @@ function handleFunctions(request, response) {
   const context = {
     clientContext: {
       identity: {
-        url: "",
-        token: ""
-      },
-      user: {
-        
+        url: "https://dangeltie.netlify.com/.netlify/identity",
+        token: "ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mzg0NjA1NjksInN1YiI6IjAifQ.TBBrA-Bg8mpkwpI4cBPNrGgEuim7U87kfWZM6mOEBSc"
       }
     }
   };
