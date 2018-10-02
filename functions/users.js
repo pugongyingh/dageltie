@@ -43,9 +43,9 @@ exports.handler = (event, context, callback) => {
     });  
   } else {
     callback(null, {
-      statusCode: 400,
+      statusCode: 401,
       headers: responseHeaders,
-      body: "Please login first."
+      body: "You must be signed in to call this function"
     });
   }
 }
