@@ -67,7 +67,18 @@ function handleFunctions(request, response) {
     }
   }
 
-  const promise = handler.handler(lambdaRequest, {}, callback);
+  const context = {
+    clientContext: {
+      identity: {
+        url: "",
+        token: ""
+      },
+      user: {
+        
+      }
+    }
+  };
+  const promise = handler.handler(lambdaRequest, context, callback);
   if (!promise) { return; }
   if (typeof promise.then !== "function") { return; }
   if (typeof callback !== "function") { return; }
