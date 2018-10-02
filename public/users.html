@@ -20,16 +20,19 @@
       import "./components/layout/index.js";
     </script>
     <script type="text/javascript">
-      const response = await fetch(
-        "/.netlify/functions/users",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${await netlifyIdentity.currentUser().jwt()}`,
+      async function getUsers() {
+        const response = await fetch(
+          "/.netlify/functions/users",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${await netlifyIdentity.currentUser().jwt()}`,
+            },
           },
-        },
-      );
-      console.log("response", response);
+        );
+        console.log("response", response);
+      }
+      netlifyIdentity.on("init", getUsers);
     </script>
   </head>
   <body>

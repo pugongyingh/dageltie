@@ -3,6 +3,10 @@ const url = require("url");
 
 exports.handler = (event, context, callback) => {
   const { identity, user } = context.clientContext;
+  const responseHeaders = {
+    "Access-Control-Allow-Origin" : "*",
+    "Access-Control-Allow-Headers": "Content-Type"
+  };
   if (user) {
     const functionUrl = url.parse(`${identity.url}/admin/users`);
     const requestOptions = {
@@ -15,10 +19,6 @@ exports.handler = (event, context, callback) => {
       headers: {
         Authorization: `Bearer ${identity.token}`,
       }
-    };
-    const responseHeaders = {
-      "Access-Control-Allow-Origin" : "*",
-      "Access-Control-Allow-Headers": "Content-Type"
     };
     https.get(requestOptions, (response) => {
       let data = "";
