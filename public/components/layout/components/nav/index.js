@@ -12,7 +12,6 @@ customElements.define(
     }
     render() {
       const user = netlifyIdentity.currentUser();
-      console.log("user", user);
       this.shadowRoot.innerHTML = `<nav>
   <style type="text/css">
     #nav {
