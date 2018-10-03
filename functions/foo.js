@@ -1,6 +1,7 @@
+const TOML = require("@iarna/toml");
+
 exports.handler = function(event, context, callback) {
-  try {
-    const TOML = require("@iarna/toml");
+  try {    
     console.log("foo: required toml");
     console.log("TOML", typeof TOML);
   } catch (error) {
