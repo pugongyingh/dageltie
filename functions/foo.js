@@ -7,6 +7,7 @@ try {
 
 exports.handler = function(event, context, callback) {  
   console.log("TOML", typeof TOML);
+  console.log("TOML", Object.keys(TOML));
   const statusCode = 200;
   const headers = {
     "Access-Control-Allow-Origin" : "*",
