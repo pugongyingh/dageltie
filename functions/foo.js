@@ -1,13 +1,12 @@
-const TOML = require("@iarna/toml");
+let TOML = null;
+try {
+  TOML = require("@iarna/toml");
+} catch (error) {
+  TOML = error;
+}
 
-exports.handler = function(event, context, callback) {
-  try {    
-    console.log("foo: required toml");
-    console.log("TOML", typeof TOML);
-  } catch (error) {
-    console.log(`foo: error requiring toml; ${error}`);
-  }
-  
+exports.handler = function(event, context, callback) {  
+  console.log("TOML", typeof TOML);
   const statusCode = 200;
   const headers = {
     "Access-Control-Allow-Origin" : "*",
