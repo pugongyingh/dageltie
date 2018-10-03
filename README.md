@@ -12,11 +12,11 @@
 
 Start the local development server with `npm start`.
 
-This will start a custom server defined in `server.js` which will serve your `public` files and Netlify `functions`.
+This will start a custom server defined in `server.js` which will serve your `publish` files and Netlify `functions`.
 
 Urls that end in `/` will get `index.html` added to the end of them.
 
-Files in the `public` folder will be served at `/`.
+Files in the `publish` folder will be served at `/`.
 
 Functions in the `functions` directory will be called and the response will be served at `/.netlify/functions/${functionName}`.
 

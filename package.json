@@ -15,6 +15,7 @@
     "netlify"
   ],
   "scripts": {
+    "build": "node --print '\"NO_BUILD=true\"'",
     "start": "node server.js"
   }
 }
