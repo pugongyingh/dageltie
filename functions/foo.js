@@ -1,13 +1,13 @@
-let TOML = null;
+let contentful = null;
 try {
-  TOML = require("@iarna/toml");
+  contentful = require("contentful");
 } catch (error) {
-  TOML = error;
+  contentful = error;
 }
 
-exports.handler = function(event, context, callback) {  
-  console.log("TOML", TOML);
-  console.log("TOML.code", TOML.code);
+exports.handler = function(event, context, callback) {
+  console.log("contentful typeof", typeof contentful);
+  console.log("contentful", contentful);
   const statusCode = 200;
   const headers = {
     "Access-Control-Allow-Origin" : "*",
