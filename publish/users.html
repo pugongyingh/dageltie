@@ -30,7 +30,11 @@
             },
           },
         );
-        console.log("response", response);
+        const usersElement = document.getElementById("users");
+        const userItems = response.users.map((user) => {
+          return `<li>${user.email}</li>`;
+        }).join("");
+        usersElement.innerHTML = userItems;
       }
       netlifyIdentity.on("init", getUsers);
     </script>
@@ -38,6 +42,7 @@
   <body>
     <dageltie-layout>
       <h1>Users</h1>
+      <ul id="users"></ul>
     </dageltie-layout>
   </body>
 </html>
