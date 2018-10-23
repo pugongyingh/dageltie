@@ -44,9 +44,9 @@ customElements.define(
   </style>
   <div id="nav">
     <span id="links">
-      <a href="#about">about</a>
+      <a href="/#about">about</a>
       |
-      <a href="#contact">contact</a>
+      <a href="/#contact">contact</a>
     </span>
     <span id="identity">
       <dageltie-identity></dangeltie-identity>
