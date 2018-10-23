@@ -31,7 +31,6 @@
           },
         );
         const jsonData = await response.json();
-        console.log("jsonData", jsonData);
         const usersElement = document.getElementById("users");
         const userItems = jsonData.users.map((user) => {
           return `<li>${user.email}</li>`;
