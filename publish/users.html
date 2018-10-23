@@ -33,10 +33,12 @@
         console.log("response", response);
         console.log("response.body", response.body);
         console.log("response.json", response.json);
-        console.log("response.json()", response.json());
-        console.log("response.json().users", response.json().users);
+        console.log("response.json()", await response.json());
+        console.log("response.json().users", await response.json().users);
+        const jsonData = await response.json();
+        console.log("jsonData", jsonData);
         const usersElement = document.getElementById("users");
-        const userItems = response.json().users.map((user) => {
+        const userItems = await response.json().users.map((user) => {
           return `<li>${user.email}</li>`;
         }).join("");
         usersElement.innerHTML = userItems;
