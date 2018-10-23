@@ -31,9 +31,12 @@
           },
         );
         console.log("response", response);
-        console.log("response.users", response.users);
+        console.log("response.body", response.body);
+        console.log("response.json", response.json);
+        console.log("response.json()", response.json());
+        console.log("response.json().users", response.json().users);
         const usersElement = document.getElementById("users");
-        const userItems = response.users.map((user) => {
+        const userItems = response.json().users.map((user) => {
           return `<li>${user.email}</li>`;
         }).join("");
         usersElement.innerHTML = userItems;
